@@ -5,7 +5,6 @@ var G = [
     s: [
       'English',
       'Mathematics',
-      'EVS and General Awareness',
       'Art and Creative Expression'
     ]
   },
@@ -45,11 +44,13 @@ var G = [
     s: [
       'English',
       'Marathi',
-      'Hindi (or Sanskrit, French, Urdu)',
-      'Mathematics: Algebra, Geometry and Trigonometry',
+      'Hindi',
+      'Mathematics: Algebra',
+      'Mathematics: Geometry',
       'Science and Technology',
-      'Social Sciences: History, Political Science, Geography, Economics',
-      'ICT',
+      ' History ',
+      'Political Science',
+      'Geography',
       'Health and Physical Education',
       'Defence Studies or Self Development'
     ]
