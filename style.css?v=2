@@ -3,8 +3,9 @@
   --teal:#2a8a94;
   --green:#a1c93a;
   --navy:#2b3990;
+
   --paper:#fffdf5;
-  --card:#fff;
+  --card:#ffffff;
   --ink:#1d2a4a;
   --muted:#55607f;
   --line:#e8e2c9;
@@ -14,11 +15,17 @@
   --body:"Nunito","Segoe UI",system-ui,sans-serif;
 
   box-sizing:border-box;
+
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 
   color-scheme:light;
 }
+
+
+/* =========================
+   DARK MODE
+========================= */
 
 @media (prefers-color-scheme:dark){
 
@@ -44,10 +51,16 @@
   --muted:#b3bcd6;
   --line:#2c3a5e;
   --soft:#14323a;
+
   --teal:#4cc0cb;
 
   color-scheme:dark;
 }
+
+
+/* =========================
+   BASIC RESET
+========================= */
 
 html{
   scroll-padding-top:env(safe-area-inset-top,0px);
@@ -62,9 +75,21 @@ html{
 
 body{
   margin:0;
-  background:var(--paper);
+
   color:var(--ink);
+
   font:400 18px/1.65 var(--body);
+
+  /* Soft educational background */
+  background-color:var(--paper);
+
+  background-image:
+    radial-gradient(
+      rgba(42,138,148,.08) 1px,
+      transparent 1px
+    );
+
+  background-size:24px 24px;
 }
 
 a{
@@ -75,6 +100,11 @@ a{
   outline:3px solid var(--navy);
   outline-offset:3px;
 }
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
 
 .wrap{
   max-width:1000px;
@@ -90,28 +120,47 @@ a{
 nav{
   display:flex;
   align-items:center;
+
   gap:12px;
+
   padding:12px 0;
+
   flex-wrap:wrap;
 }
 
 nav strong{
   font:600 22px var(--head);
+
   margin-right:auto;
 }
 
 nav a{
   font-weight:800;
+
   text-decoration:none;
+
   padding:8px 14px;
+
   border-radius:99px;
+
   background:var(--yellow);
+
   color:#1d2a4a;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+nav a:hover{
+  transform:translateY(-2px);
+
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
 }
 
 
 /* =========================
-   HEADER LOGO
+   SMALL HEADER LOGO
 ========================= */
 
 .header-logo{
@@ -122,10 +171,8 @@ nav a{
 
   object-fit:contain;
 
-  /* IMPORTANT */
   background:transparent;
 
-  /* No white circle */
   border:0;
 }
 
@@ -136,26 +183,82 @@ nav a{
 
 .hero{
   background:var(--teal);
+
   color:#fff;
+
   position:relative;
+
   overflow:hidden;
+}
+
+
+/* Decorative circles */
+
+.hero::before{
+  content:"";
+
+  position:absolute;
+
+  width:260px;
+  height:260px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.07);
+
+  top:-120px;
+  right:-80px;
+}
+
+.hero::after{
+  content:"";
+
+  position:absolute;
+
+  width:180px;
+  height:180px;
+
+  border-radius:50%;
+
+  background:rgba(250,200,15,.10);
+
+  bottom:-100px;
+  left:-60px;
 }
 
 .hero .wrap{
   padding-top:52px;
+
   padding-bottom:64px;
+
   position:relative;
+
+  z-index:1;
 }
 
+
+/* =========================
+   HERO HEADING
+========================= */
+
 .hero h1{
-  font:600 clamp(34px,6vw,58px)/1.12 var(--head);
+  font:
+
+    600
+    clamp(34px,6vw,58px)
+    /1.12
+    var(--head);
+
   margin:0 0 16px;
+
   max-width:15ch;
 }
 
 .hero p{
   font-size:20px;
+
   max-width:28em;
+
   margin:0 0 24px;
 }
 
@@ -168,23 +271,23 @@ nav a{
   position:absolute;
 
   right:20px;
+
   top:50%;
 
   transform:translateY(-50%);
 
   width:clamp(170px,24vw,240px);
+
   height:clamp(170px,24vw,240px);
 
   object-fit:contain;
 
   display:block;
 
-  /* IMPORTANT */
   background:transparent;
 
   border:0;
 
-  /* No white container */
   box-shadow:none;
 }
 
@@ -211,6 +314,17 @@ nav a{
   border:0;
 
   cursor:pointer;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.18);
 }
 
 
@@ -219,28 +333,45 @@ nav a{
 ========================= */
 
 section{
-  padding:52px 0;
+  padding:64px 0;
+
+  position:relative;
 }
 
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+
 h2{
-  font:600 clamp(28px,4vw,38px)/1.2 var(--head);
+  font:
+
+    600
+    clamp(28px,4vw,38px)
+    /1.2
+    var(--head);
+
   margin:0 0 8px;
 }
 
 .sub{
   color:var(--muted);
+
   margin:0 0 24px;
 }
 
 
 /* =========================
-   TABS
+   STAGE TABS
 ========================= */
 
 .tabs{
   display:flex;
+
   gap:8px;
+
   flex-wrap:wrap;
+
   margin-bottom:16px;
 }
 
@@ -258,30 +389,46 @@ h2{
   color:var(--ink);
 
   cursor:pointer;
+
+  transition:
+    background .2s ease,
+    color .2s ease,
+    transform .2s ease;
+}
+
+.tabs button:hover{
+  transform:translateY(-2px);
 }
 
 .tabs button[aria-selected="true"]{
   background:var(--teal);
+
   color:#fff;
 }
 
 
 /* =========================
-   PANEL
+   STAGE INFORMATION PANEL
 ========================= */
 
 .panel{
   background:var(--soft);
 
-  border-radius:18px;
+  border-radius:20px;
 
-  padding:24px;
+  padding:26px;
 
   min-height:140px;
+
+  border:1px solid rgba(42,138,148,.12);
+
+  box-shadow:
+    0 8px 24px rgba(42,138,148,.08);
 }
 
 .panel h3{
   font:600 24px var(--head);
+
   margin:0 0 6px;
 }
 
@@ -291,13 +438,16 @@ h2{
 
 
 /* =========================
-   CHIPS
+   SUBJECT CHIPS
 ========================= */
 
 .chips{
   display:flex;
+
   gap:8px;
+
   flex-wrap:wrap;
+
   margin-top:10px;
 }
 
@@ -313,6 +463,9 @@ h2{
   font-weight:600;
 
   font-size:16px;
+
+  box-shadow:
+    0 2px 6px rgba(0,0,0,.04);
 }
 
 
@@ -326,7 +479,7 @@ h2{
   grid-template-columns:
     repeat(auto-fit,minmax(210px,1fr));
 
-  gap:16px;
+  gap:18px;
 }
 
 .why div{
@@ -334,9 +487,23 @@ h2{
 
   border:2px solid var(--line);
 
-  border-radius:18px;
+  border-radius:20px;
 
-  padding:18px;
+  padding:20px;
+
+  box-shadow:
+    0 8px 22px rgba(29,42,74,.06);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.why div:hover{
+  transform:translateY(-4px);
+
+  box-shadow:
+    0 14px 30px rgba(29,42,74,.10);
 }
 
 .why b{
@@ -357,8 +524,18 @@ h2{
 
 
 /* =========================
-   ENQUIRY
+   ADMISSION SECTION
 ========================= */
+
+#enquire{
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(42,138,148,.08),
+      rgba(250,200,15,.08)
+    );
+}
 
 .enq{
   display:grid;
@@ -370,8 +547,14 @@ h2{
   align-items:start;
 }
 
+
+/* =========================
+   FORM
+========================= */
+
 form{
   display:grid;
+
   gap:12px;
 }
 
@@ -396,12 +579,39 @@ select{
   background:var(--card);
 
   color:var(--ink);
+
+  outline:none;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+input:focus,
+select:focus{
+  border-color:var(--teal);
+
+  box-shadow:
+    0 0 0 3px rgba(42,138,148,.12);
 }
 
 
 /* =========================
    CONTACT
 ========================= */
+
+.contact{
+  background:var(--card);
+
+  border:2px solid var(--line);
+
+  border-radius:20px;
+
+  padding:24px;
+
+  box-shadow:
+    0 8px 22px rgba(29,42,74,.06);
+}
 
 .contact a{
   display:block;
@@ -411,6 +621,15 @@ select{
   text-decoration:none;
 
   margin:6px 0;
+
+  color:var(--navy);
+
+  transition:
+    transform .2s ease;
+}
+
+.contact a:hover{
+  transform:translateX(4px);
 }
 
 
@@ -419,13 +638,15 @@ select{
 ========================= */
 
 footer{
-  padding:24px 0 36px;
+  padding:28px 0 40px;
 
   color:var(--muted);
 
   font-size:16px;
 
   border-top:1px solid var(--line);
+
+  background:var(--paper);
 }
 
 
@@ -435,8 +656,38 @@ footer{
 
 @media (max-width:700px){
 
-  .enq{
-    grid-template-columns:1fr;
+  body{
+    font-size:17px;
+  }
+
+  .wrap{
+    padding:0 16px;
+  }
+
+  nav strong{
+    font-size:20px;
+  }
+
+  .header-logo{
+    width:50px;
+    height:50px;
+  }
+
+  .hero .wrap{
+    padding-top:32px;
+
+    padding-bottom:48px;
+  }
+
+  .hero h1{
+    font-size:
+      clamp(32px,10vw,46px);
+
+    max-width:100%;
+  }
+
+  .hero p{
+    font-size:18px;
   }
 
   .hero-logo{
@@ -445,9 +696,40 @@ footer{
     transform:none;
 
     width:210px;
+
     height:210px;
 
     margin:32px auto 0;
+  }
+
+  section{
+    padding:48px 0;
+  }
+
+  .tabs{
+    gap:6px;
+  }
+
+  .tabs button{
+    font-size:15px;
+
+    padding:9px 14px;
+  }
+
+  .panel{
+    padding:20px;
+  }
+
+  .why{
+    grid-template-columns:1fr;
+  }
+
+  .enq{
+    grid-template-columns:1fr;
+  }
+
+  .contact a{
+    font-size:25px;
   }
 
 }
@@ -461,6 +743,12 @@ footer{
 
   html{
     scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    transition:none !important;
   }
 
 }
